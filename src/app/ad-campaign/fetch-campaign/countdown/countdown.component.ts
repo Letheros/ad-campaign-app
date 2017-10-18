@@ -17,10 +17,7 @@ export class CountdownComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   message: string;
 
-  constructor(elm: ElementRef,
-              private campaignDataService: CampaignDataService) {
-    // this.futureString = elm.nativeElement.getAttribute('inputDate');
-    this.futureString = this.campaignDataService.activatedCampaign.end_time;
+  constructor(private campaignDataService: CampaignDataService) {
   }
 
   parseTime(rest: any) {
@@ -47,6 +44,7 @@ export class CountdownComponent implements OnInit, OnDestroy {
     // };
   }
   ngOnInit() {
+    this.futureString = this.campaignDataService.activatedCampaign.end_time;
     this.future = new Date(this.futureString);
     this.$counter = Observable.interval(1000)
       .map(
