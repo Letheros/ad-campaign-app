@@ -1,6 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CampaignDataService } from '../campaign-data.service';
-import {Campaign} from '../../shared/campaign.model';
+import { Campaign } from '../../shared/campaign.model';
 
 @Component({
   selector: 'app-create-campaign',

@@ -10,7 +10,7 @@ import {Campaign} from '../../shared/campaign.model';
   styleUrls: ['./fetch-campaign.component.css']
 })
 export class FetchCampaignComponent implements OnInit {
-  activatedCampaign = null;
+  activatedCampaign = {id: null, ad_content: null};
   @ViewChild('userIDInput') userIDInputRef: ElementRef;
   constructor(private campaignDataService: CampaignDataService) {
   }
@@ -23,7 +23,6 @@ export class FetchCampaignComponent implements OnInit {
       alert('Please input your User ID');
       return false;
     }
-    // this.activatedCampaign = this.campaignDataService.getCampaignByID(id);
     this.campaignDataService.requireCampaignDataByID(id)
       .subscribe(
         (data: any) => {

@@ -13,9 +13,12 @@
   </div>
   <div class="col-xs-3">
     <ul class="list-group">
-      <li class="list-group-item" *ngIf="activatedCampaign !== null">
+      <li class="list-group-item" *ngIf="activatedCampaign.id !== null">
         <span>User ID</span><p>{{ activatedCampaign.id }}</p>
-        <span>Rest time</span><p>{{ activatedCampaign.duration }}</p>
+        <span>Rest time</span>
+        <div style="margin-bottom: 10px">
+          <app-countdown inputDate="January 1, 2018 12:00:00">Loading..</app-countdown>
+        </div>
         <span>Content</span><p>{{ activatedCampaign.ad_content }}</p>
       </li>
     </ul>

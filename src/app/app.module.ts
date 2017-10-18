@@ -10,6 +10,7 @@ import { AdCampaignStartComponent } from './ad-campaign/ad-campaign-start/ad-cam
 import { AppRoutingModule } from './app-routing.module';
 import {CampaignDataService} from './ad-campaign/campaign-data.service';
 import { HttpModule } from '@angular/http';
+import { CountdownComponent } from './ad-campaign/fetch-campaign/countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpModule } from '@angular/http';
     AdCampaignComponent,
     CreateCampaignComponent,
     FetchCampaignComponent,
-    AdCampaignStartComponent
+    AdCampaignStartComponent,
+    CountdownComponent
   ],
   imports: [
     BrowserModule,

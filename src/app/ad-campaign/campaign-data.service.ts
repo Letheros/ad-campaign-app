@@ -5,20 +5,11 @@ import { Observable } from 'rxjs/Observable';
 
 import { Campaign } from '../shared/campaign.model';
 
-// @NgModule({
-//   imports: [
-//     BrowserModule,
-//     HttpModule
-//   ]
-// })
-
 @Injectable()
 export class CampaignDataService {
   campaigns: Campaign[] = [];
-  activatedCampaign: Campaign;
+  activatedCampaign: any;
   private getUrl = 'http://192.168.1.11:8080/campaigns';
-    // 'https://ad-campaign-c627a.firebaseio.com/data.json';
-   // 'http://localhost:4200/api';
   constructor(private http: Http) {
   }
   requireCampaignData() {
@@ -41,6 +32,7 @@ export class CampaignDataService {
       .map(
         (response: Response) => {
           const data = response.json();
+          this.activatedCampaign = data;
           return data;
         }
       )
@@ -54,19 +46,6 @@ export class CampaignDataService {
     const headers = new Headers({'Content-type': 'application/json'});
     return this.http.post(this.getUrl, newCampaign, { headers: headers });
   }
-  getCampaign() {
-    this.requireCampaignData()
-      .subscribe(
-        (campaigns: any[]) => {
-          this.campaigns = campaigns;
-          console.log(campaigns);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    return this.campaigns.slice();
-  }
   getCampaignByID(id: any) {
     this.requireCampaignDataByID(id)
       .subscribe(
@@ -78,6 +57,9 @@ export class CampaignDataService {
           console.log(error);
         }
       );
+    return this.activatedCampaign;
+  }
+  getActivatedCampaign() {
     return this.activatedCampaign;
   }
   addCampaign(campaign: Campaign) {
