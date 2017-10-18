@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-lg-4 form-group">
+      <label for="userID">User ID</label>
+      <input
+          type = "text"
+          class="form-control"
+          id = "userID"
+          placeholder="please input your id..."
+          #IDInput>
+      <label for="duration">Campaign Duration(measure by minute)</label>
+        <input
+          type = "text"
+          class="form-control"
+          id = "duration"
+          placeholder="please input duration for the campaign..."
+          #durationInput>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-lg-6 form-group">
+      <label for="content">Campaign Content</label>
+      <textarea
+          type = "text"
+          class="form-control"
+          id = "content"
+          placeholder="please input context for the campaign..."
+          style="height: 150px"
+          #contentInput></textarea>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-3">
+      <button class="btn btn-success" type="submit" (click)="onCreateCampaign()">Create</button>
+    </div>
+  </div>
+</div>
