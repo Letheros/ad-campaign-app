@@ -11,13 +11,12 @@
     </div>
     <button class="btn btn-success" type="submit" (click)="onFetchCampaign()">Fetch Campaign</button>
   </div>
-  <div class="col-xs-8">
+  <div class="col-xs-3">
     <ul class="list-group">
-      <li class="list-group-item"
-      *ngFor="let campaign of campaignArray">
-        <span>User ID</span><p>{{ campaign.id }}</p>
-        <span>Rest time</span><p>{{ campaign.duration }}</p>
-        <span>Content</span><p>{{ campaign.ad_content }}</p>
+      <li class="list-group-item" *ngIf="activatedCampaign !== null">
+        <span>User ID</span><p>{{ activatedCampaign.id }}</p>
+        <span>Rest time</span><p>{{ activatedCampaign.duration }}</p>
+        <span>Content</span><p>{{ activatedCampaign.ad_content }}</p>
       </li>
     </ul>
   </div>

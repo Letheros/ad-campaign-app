@@ -15,6 +15,7 @@ import { Campaign } from '../shared/campaign.model';
 @Injectable()
 export class CampaignDataService {
   campaigns: Campaign[] = [];
+  activatedCampaign: Campaign;
   private getUrl = 'http://192.168.1.11:8080/campaigns';
     // 'https://ad-campaign-c627a.firebaseio.com/data.json';
    // 'http://localhost:4200/api';
@@ -25,9 +26,6 @@ export class CampaignDataService {
       .map(
         (response: Response) => {
           const data = response.json();
-          for (const campaign of data) {
-            campaign.name = 'FETCHED_USER_' + campaign.id;
-          }
           return data;
         }
       )
@@ -37,15 +35,12 @@ export class CampaignDataService {
         }
       );
   }
-  requireCampaignDataByID(id: number) {
+  requireCampaignDataByID(id: string) {
     // if (!id) return 'Wrong id input';
-    return this.http.get(this.getUrl + id)
+    return this.http.get(this.getUrl + '/' + id)
       .map(
         (response: Response) => {
           const data = response.json();
-          for (const campaign of data) {
-            campaign.name = 'FETCHED_USER_' + campaign.id;
-          }
           return data;
         }
       )
@@ -71,6 +66,19 @@ export class CampaignDataService {
         }
       );
     return this.campaigns.slice();
+  }
+  getCampaignByID(id: any) {
+    this.requireCampaignDataByID(id)
+      .subscribe(
+        (campaign: any) => {
+          this.activatedCampaign = campaign;
+          console.log(this.activatedCampaign);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    return this.activatedCampaign;
   }
   addCampaign(campaign: Campaign) {
     this.storeCampaign(campaign);
