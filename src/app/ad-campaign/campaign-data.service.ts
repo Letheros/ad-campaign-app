@@ -9,7 +9,7 @@ import { Campaign } from '../shared/campaign.model';
 export class CampaignDataService {
   campaigns: Campaign[] = [];
   activatedCampaign: any;
-  private getUrl = 'http://192.168.1.11:8080/campaigns';
+  private getUrl = 'http://localhost:8080';
   constructor(private http: Http) {
   }
   requireCampaignData() {
